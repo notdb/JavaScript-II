@@ -84,14 +84,64 @@ console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
-let ticketPriceTotal = [];
+
+let ticketPriceTotal = runners.reduce(function(accum, runner){
+    return accum + runner.donation;
+   
+}, 0)
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// Create array of emails
+
+const emailArray = [];
+runners.forEach(function(runner){
+    emailArray.push(runner.email);
+})
+
+console.log(emailArray);
 
 // Problem 2
+// Find out the most of each size shirt to wear
+let smallShirts = [];
+let mediumShirts = [];
+let largeShirtss = [];
+let xlShirts = [];
+let bigShirts = [];
+let multiShirts = runners.filter( function(runner) {
+   if (runner.shirt_size == "S") {
+       smallShirts.push(runner)
+   } else if (runner.shirt_size == "M") {
+        mediumShirts.push(runner)
+   } else if (runner.shirt_size == "L") {
+        largeShirtss.push(runner)
+   } else if (runner.shirt_size == "XL") {
+        xlShirts.push(runner)
+   } else {
+        bigShirts.push(runner)
+   }
+});
+let shirtSizes = [smallShirts.length, mediumShirts.length, largeShirtss.length, xlShirts.length, bigShirts.length];
+shirtSizes.sort(function(a, b){
+    return a - b;
+})
+console.log(shirtSizes + ' aaa');
+// Missing a way to tag the shirts
 
 // Problem 3
+
+const donationArray = [];
+runners.forEach(function(runner){
+    donationArray.push(runner.donation);
+})
+
+donationArray.sort(function(a,b){
+    return a-b;
+})
+
+let largestDonation = donationArray.pop();
+
+console.log(largestDonation);
