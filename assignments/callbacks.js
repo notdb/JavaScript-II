@@ -2,14 +2,14 @@
 
 const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
-/* 
+
 
   //Given this problem: 
-  
+  /*
   function firstItem(arr, cb) {
     // firstItem passes the first item of the given array to the callback function.
   }
-
+*/
   // Potential Solution:
 
   // Higher order function using "cb" as the call back
@@ -18,34 +18,80 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
   }
 
   // Function invocation 
-  firstItem(items, function(first) {
+ firstItem(items, function(first) {
     console.log(first)
   });
 
-*/
+
 
 
 function getLength(arr, cb) {
   // getLength passes the length of the array into the callback.
+  return cb(arr.length)
 }
 
+getLength(items, function(first) {
+  console.log(first)
+});
+
+
 function last(arr, cb) {
-  // last passes the last item of the array into the callback.
+  let test = arr.pop();
+  return cb(test)
 }
+
+last(items, function(first) {
+  console.log(first)
+});
 
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
+  let test = x+y;
+  return test;
 }
+
+sumNums(2,3,function(cb){
+  console.log(cb)
+})
 
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
+  let test = x*y;
+  return test;
 }
+
+multiplyNums(2,3,function(cb) {
+  console.log(cb)
+})
+
+
 
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
+  if (
+ items.some(function(item){
+   return item === list
+ }) == true
+ ) {
+   return 'true'
+ } else {
+   return 'false'
+ }
 }
 
+contains(items, 'Yo-Yo', function(cb){
+  console.log(cb)
+})
+
+/*
+function testLogic() {
+
+   console.log( items.some(function(item){
+      return item === 'Notebook'
+    }) )
+}
+*/
 /* STRETCH PROBLEM */
 
 function removeDuplicates(array, cb) {
